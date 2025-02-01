@@ -18,14 +18,27 @@ def word_total_occurrences(start_url: str, word: str, depth: int = 2) -> int:
     Raises:
         Various exceptions if there are issues with downloading pages or counting words.
     """
-    pages = build_pages_set(start_url, depth)
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        futures = [executor.submit(count_word_occurrences, page, word) for page in pages]
-        total_occurrences = 0
-        for future in concurrent.futures.as_completed(futures):
-            try:
-                total_occurrences += future.result()
-            except Exception as e:
-                logging.error(f"Error in counting word occurrences: {e}")
+    try:
+        # Build the set of pages to visit
+        pages = build_pages_set(start_url, depth)
+        logging.info(f"Found {len(pages)} pages to visit.")
 
-    return total_occurrences  # This return statement was missing
+        total_occurrences = 0
+
+        # Use ThreadPoolExecutor to count word occurrences across pages concurrently
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            futures = [executor.submit(count_word_occurrences, page, word) for page in pages]
+
+            # Process the results as the threads complete
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    total_occurrences += future.result()
+                except Exception as e:
+                    logging.error(f"Error in counting word occurrences: {e}")
+
+        logging.info(f"Total occurrences of the word '{word}': {total_occurrences}")
+        return total_occurrences
+
+    except Exception as e:
+        logging.error(f"Error in word_total_occurrences: {e}")
+        raise  # Re-raise the exception after logging it
