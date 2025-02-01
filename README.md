@@ -22,12 +22,6 @@ This README provides an overview of how to handle real-world challenges, explain
     cd Word-Score-App
     ```
 
-3. Install the necessary dependencies. This project uses `uv` to manage the environment:
-
-    ```bash
-    uv install
-    ```
-
 ## Starting the Project
 
 To start the project, use the following command:
