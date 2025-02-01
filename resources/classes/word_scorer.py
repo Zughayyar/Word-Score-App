@@ -21,7 +21,6 @@ class WordScorer:
         return self.pages_set
 
     def calculate_word_occurrences(self):
-        # Calculate word occurrences only if not calculated yet
-        if self._word_occurrences == 0:  # If occurrences haven't been calculated yet
+        if self._word_occurrences == 0:
             self._word_occurrences = word_total_occurrences(self.page_url, self.word)
-        return self._word_occurrences
+        return self._word_occurrences  # Return the count if already calculated

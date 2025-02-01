@@ -3,7 +3,7 @@ import logging
 from resources.functions.build_pages_set import build_pages_set
 from resources.functions.count_word_occurrences import count_word_occurrences
 
-def word_total_occurrences(start_url: str, word: str, depth: int = 2) -> int:
+def word_total_occurrences(start_url: str, word: str, depth: int = 1) -> int:
     """
     Calculate the total occurrences of a specific word across pages starting from a given URL.
 
