@@ -5,6 +5,7 @@ from typing import Set
 from resources.classes.page import Page
 from resources.functions.download_page import download_page
 from resources.functions.get_links_in_page import get_links_in_page
+import logging
 
 def build_pages_set(start_url: str, depth: int = 2) -> Set[Page]:
     visited = set()  # Track visited URLs to avoid redundant processing
@@ -20,7 +21,7 @@ def build_pages_set(start_url: str, depth: int = 2) -> Set[Page]:
         try:
             page = download_page(url)  # Download the page
         except Exception as e:
-            print(f"Failed to download {url}: {e}")  # Handle errors
+            logging.error(f"Failed to download {url}: {e}")
             continue
 
         visited.add(url)
