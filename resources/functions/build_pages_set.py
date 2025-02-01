@@ -33,3 +33,7 @@ def build_pages_set(start_url: str, depth: int = 2) -> Set[Page]:
                     queue.put((link, current_depth + 1))
 
     return pages
+
+# Depth Issue:
+# The function uses a breadth-first search approach, limited by a depth parameter (default=2).
+# This prevents excessive crawling and limits resource usage while maintaining efficiency.
