@@ -1,6 +1,3 @@
-from resources.functions.build_pages_set import build_pages_set
-from resources.functions.word_total_occurencies import word_total_occurrences
-
 
 # My application’s implementation: ### Anas Zughayyar ###
 
