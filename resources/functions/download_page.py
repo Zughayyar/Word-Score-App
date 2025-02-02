@@ -43,7 +43,7 @@ def download_page(url: str) -> Page:
     for attempt in range(retries):
         try:
             # Send a GET request to the provided URL with a timeout of 10 seconds
-            response = requests.get(url, timeout=10, headers=headers, verify=False)
+            response = requests.get(url, timeout=10, headers=headers, verify=True)
             
             # Check if the request was successful
             if response.status_code == 200:
