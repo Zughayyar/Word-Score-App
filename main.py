@@ -4,8 +4,8 @@ def main():
     print("Hello from word-score-app!")
 
     ### user inputs:
-    page_url = "https://brochure.getpython.info/stories/cybo/using-python-to-serve-big-data-on-the-web-at-cybo-the-global-business-directory"
-    word = "python"
+    page_url = "https://natesmith.design/scroll-transform-exploration"
+    word = "nate"
 
     ### make the search:
     word_score_1 = WordScorer(page_url, word)
